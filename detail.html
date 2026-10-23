@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>연수 과정 상세 - 2026 부산대학교 직무연수 포털</title>
+  <meta name="description" content="부산대학교 교직원 직무연수 세부 교육내용 및 수강신청 안내">
+  
+  <!-- 파비콘 -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  
+  <!-- 웹폰트 Pretendard -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  
+  <!-- 메인 스타일시트 -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- PapaParse CSV 파서 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+
+  <!-- 글로벌 상단 헤더 -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-wrap">
+        <a href="index.html" style="display:flex; align-items:center; gap:12px;">
+          <img src="assets/pnu_logo.svg" alt="부산대학교 로고" class="brand-logo" onerror="this.style.display='none'">
+          <div class="brand-text-group">
+            <span class="brand-title">
+              부산대학교 직무연수
+              <span class="year-badge">2026</span>
+            </span>
+            <span class="brand-subtitle">Pusan National University Staff Training Portal</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="header-actions">
+        <a href="index.html" class="header-link-btn">
+          <span>← 전체 과정 목록</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 상세 페이지 상단 헤더 영역 -->
+  <section class="detail-page-header">
+    <div class="container">
+      <!-- 브레드크럼 -->
+      <nav class="breadcrumb-nav" aria-label="경로 탐색">
+        <a href="index.html">홈</a>
+        <span>›</span>
+        <span id="breadcrumbCategory">분야</span>
+        <span>›</span>
+        <span id="breadcrumbTitle" style="color:var(--text-secondary); font-weight:600;">과정명</span>
+      </nav>
+
+      <!-- 과정 헤더 -->
+      <div class="detail-title-wrap">
+        <div class="badges-left" id="detailBadges">
+          <!-- JS에서 뱃지 렌더링 -->
+          <span class="badge badge-essential" id="detailTypeBadge">필수</span>
+          <span class="badge badge-method method-online" id="detailMethodBadge">💻 온라인</span>
+          <span class="category-tag" id="detailCodeBadge" style="font-family:monospace; font-weight:bold; color:var(--pnu-blue-600);">PNU-2026-000</span>
+        </div>
+
+        <h1 class="detail-main-title" id="detailTitle">연수 과정을 불러오는 중입니다...</h1>
+        <p class="detail-summary-lead" id="detailSummary"></p>
+      </div>
+
+      <!-- 핵심 요약 정보 6개 그리드 -->
+      <div class="detail-key-grid">
+        <div class="key-spec-box">
+          <div class="key-spec-icon">📅</div>
+          <div>
+            <div class="key-spec-label">교육기간</div>
+            <div class="key-spec-value" id="detailPeriod">-</div>
+          </div>
+        </div>
+
+        <div class="key-spec-box">
+          <div class="key-spec-icon">📝</div>
+          <div>
+            <div class="key-spec-label">신청기간</div>
+            <div class="key-spec-value" id="detailApplyPeriod">-</div>
+          </div>
+        </div>
+
+        <div class="key-spec-box">
+          <div class="key-spec-icon">⏱️</div>
+          <div>
+            <div class="key-spec-label">이수 인정시간</div>
+            <div class="key-spec-value" id="detailHours">-</div>
+          </div>
+        </div>
+
+        <div class="key-spec-box">
+          <div class="key-spec-icon">👥</div>
+          <div>
+            <div class="key-spec-label">수강 대상</div>
+            <div class="key-spec-value" id="detailTarget">-</div>
+          </div>
+        </div>
+
+        <div class="key-spec-box">
+          <div class="key-spec-icon">🏫</div>
+          <div>
+            <div class="key-spec-label">교육방식 / 정원</div>
+            <div class="key-spec-value" id="detailMethodCapacity">-</div>
+          </div>
+        </div>
+
+        <div class="key-spec-box">
+          <div class="key-spec-icon">🏢</div>
+          <div>
+            <div class="key-spec-label">담당 부서</div>
+            <div class="key-spec-value" id="detailDepartment">-</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 상세 본문 및 사이드바 영역 -->
+  <main class="container" style="padding-top: 32px;">
+    <div class="detail-content-section">
+      
+      <!-- 좌측: 상세 설명 본문 -->
+      <div class="detail-main-column">
+        
+        <!-- 1. 과정 상세 소개 -->
+        <section class="detail-body-card">
+          <h2 class="detail-section-title">
+            <span>📖</span>
+            <span>과정 개요 및 상세 소개</span>
+          </h2>
+          <div class="detail-desc-text" id="detailDescription">
+            내용을 불러오는 중입니다...
+          </div>
+        </section>
+
+        <!-- 2. 학습 목표 -->
+        <section class="detail-body-card">
+          <h2 class="detail-section-title">
+            <span>🎯</span>
+            <span>학습 목표</span>
+          </h2>
+          <ul class="bullet-list" id="detailObjectivesList">
+            <!-- JS에서 불릿 렌더링 -->
+          </ul>
+        </section>
+
+        <!-- 3. 주요 교육 내용 -->
+        <section class="detail-body-card">
+          <h2 class="detail-section-title">
+            <span>📑</span>
+            <span>주요 교육 내용 (커리큘럼)</span>
+          </h2>
+          <div class="curriculum-chips-list" id="detailCurriculumList">
+            <!-- JS에서 렌더링 -->
+          </div>
+        </section>
+
+        <!-- 4. 동일 분야 추천 연수 과정 -->
+        <section class="detail-body-card" id="relatedSection" style="margin-bottom:0;">
+          <h2 class="detail-section-title">
+            <span>💡</span>
+            <span>같은 분야 추천 연수 과정</span>
+          </h2>
+          <div id="relatedCoursesGrid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px;">
+            <!-- JS에서 연관 과정 카드 렌더링 -->
+          </div>
+        </section>
+
+      </div>
+
+      <!-- 우측: 신청 사이드바 카드 -->
+      <aside class="detail-sidebar-column">
+        <div class="detail-sidebar-card">
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: var(--pnu-blue-800);">
+            연수 신청 안내
+          </h3>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 20px;">
+            부산대학교 교직원 연수 시스템(PNU HRD)을 통해 수강 신청이 진행됩니다.
+          </p>
+
+          <!-- 신청 CTA 버튼 -->
+          <a href="#" id="applyLinkBtn" target="_blank" rel="noopener noreferrer" class="apply-cta-btn">
+            <span>수강 신청 바로가기</span>
+            <span>↗</span>
+          </a>
+
+          <!-- 공유 및 복사 버튼 -->
+          <button type="button" id="shareBtn" class="detail-btn" style="width: 100%; justify-content: center; height: 42px; margin-bottom: 12px; background: #f1f5f9; color: var(--text-secondary);">
+            <span>🔗 과정 링크 복사</span>
+          </button>
+
+          <!-- 목록으로 가기 버튼 -->
+          <a href="index.html" class="detail-btn" style="width: 100%; justify-content: center; height: 42px; background: #ffffff; border: 1px solid var(--border-light); color: var(--text-secondary);">
+            <span>← 전체 과정 목록</span>
+          </a>
+
+          <!-- 문의처 박스 -->
+          <div class="contact-action-box">
+            <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">📞 연수 운영 문의</div>
+            <div id="detailContactText" style="color: var(--text-secondary); line-height: 1.5;">-</div>
+            <a href="#" id="callContactBtn" style="display: inline-flex; align-items:center; gap: 4px; margin-top: 8px; font-weight: 700; color: var(--pnu-blue-600); font-size: 0.82rem;">
+              <span>전화 연결</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- 글로벌 푸터 -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <h4>부산대학교 교직원 직무연수 포털</h4>
+          <p>Pusan National University Staff Development & Professional Training</p>
+        </div>
+        <div class="footer-meta">
+          <p><strong>주관 부서:</strong> 인재개발원 · 정보화본부 · 감사실 · 안전관리실 · 재무과 · 총무과 · 교무과 · 학생지원과</p>
+          <p><strong>문의 안내:</strong> 각 과정별 상세페이지 내 담당부서 직통 연락처 참조</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Pusan National University. All rights reserved.</p>
+        <p>본 포털의 모든 교육 데이터는 구글 스프레드시트와 실시간 동기화됩니다.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 통신 및 상세 스크립트 -->
+  <script src="js/api.js"></script>
+  <script src="js/detail.js"></script>
+</body>
+</html>
